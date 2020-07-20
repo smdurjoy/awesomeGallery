@@ -8,13 +8,34 @@
     height: 250px;
     width: 100%;
     border: 2px dashed #ccc;
-    line-height: 250px;
     text-align: center;
     color: #ccc;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.drop {
+.fill {
+    background: transparent;
+    height: 200px;
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+.dragImage {
+    height: 190px;
+    width: 96%;
+    position: absolute;
+    display: none;
+}
+
+.hovered {
     border-color: #222;
     color: #222;
 }
