@@ -109,6 +109,7 @@
                 <div class="fill d-none" id="fill">
                     <img src="" class="rounded mx-auto d-block dragImage" alt="image !" id="dropImage">
                 </div>
+                <input type="file" class="dropZoneFileSelect" id="uploadImage"/>
             </div>
             <div class="progressBar mt-3">
                 <div class="bar-fill">
