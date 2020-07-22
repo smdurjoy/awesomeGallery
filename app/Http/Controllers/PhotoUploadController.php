@@ -18,8 +18,7 @@ class PhotoUploadController extends Controller
             $image = $request->file('photo');   
             $image_name = $image->getClientOriginalName();
             $imageExtension = $image->getClientOriginalExtension();
-            $imageName = $image_name.'-'.rand(111, 99999).'.'.$imageExtension;
-
+            $imageName = $image_name.'-'.rand(111111, 999999).'.'.$imageExtension;
             $request->file('photo')->move(public_path('photos'), $imageName);
             $result = Photo::insert(['title' => $title, 'photo' => $imageName]);
 
@@ -31,5 +30,9 @@ class PhotoUploadController extends Controller
         } else {
             return "File ashe nai mama";
         }
+    }
+
+    function getData() {
+        return Photo::orderBy('id', 'desc')->get();
     }
 }

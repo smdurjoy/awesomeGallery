@@ -1,3 +1,21 @@
+// get image and image title
+function getData() {
+    axios.get('/getData').then((response) => {
+        $('#contentRow').empty();
+        const data = response.data;
+
+        $.each(data, function(i) {
+            $("<div class='col-md-2 text-center'>").html(
+                "<img src='{{ asset('photos/"+data[i].photo+"') }}' class='rounded mx-auto d-block image' alt='image !'></img> "+
+                " <p>"+ data[i].title +"</p> " +
+                " <a href='javascript:void(0)' id='deleteImg' class='removeImg' dataId="+ data[i].id +"><i class='fas fa-trash-alt'></i> Remove</a> "
+            ).appendTo('#contentRow');
+        });
+    }).catch((error) => {
+        alert('error')
+    })
+}
+
 $( document ).ready(function() { 
 
     // on image drag
@@ -157,6 +175,7 @@ $( document ).ready(function() {
         }
         axios.post(url, formData, config).then((response) => {
             if(response.status == 200 && response.data == 1) {
+                getData()
                 afterUpload();
             } else {
                 afterUpload();

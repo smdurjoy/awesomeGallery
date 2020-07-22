@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PhotoUploadController@index');
 Route::post('uploadPhoto', 'PhotoUploadController@uploadPhoto');
+Route::get('getData', 'PhotoUploadController@getData');

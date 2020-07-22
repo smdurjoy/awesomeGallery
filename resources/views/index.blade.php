@@ -12,83 +12,22 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>Awesome Gallery</title>
   </head>
-  <body>
+  <body onload="getData()">
     <div class="container">
         <h2 class="my-3">Awesome Gallery</h2>
         <div class="row">
             <div class="col-md-4">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Upload Image
-            </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Upload Image
+                </button>
             </div>
             <div class="col-md-8">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </div>
         </div>
         <hr class="my-4">
-        <div class="row">
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block image" alt="image !">
-                <p>Image Title</p>
-                <a href="#" class="removeImg"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block image" alt="image !">
-                <p>Image Title</p>
-                <a href="#" class="removeImg"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block image" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block image" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block image" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
-            <div class="col-md-2 text-center">
-                <img src="https://source.unsplash.com/random/150x150" class="rounded mx-auto d-block" alt="image !">
-                <p>Image Title</p>
-                <a href="#"><i class="fas fa-trash-alt"></i> Remove</a>
-            </div>
+        <div class="row" id="contentRow">
+            
         </div>
     </div>
 
