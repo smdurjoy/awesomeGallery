@@ -22,12 +22,21 @@
                 </button>
             </div>
             <div class="col-md-8">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
             </div>
         </div>
         <hr class="my-4">
         <div class="row" id="contentRow">
-            
+            <table>
+                <thead>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Remove</th>
+                </thead>
+                <tbody id="tableBody">
+
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -79,8 +88,8 @@
     </div>
     </div>
 
-    <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/axios.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

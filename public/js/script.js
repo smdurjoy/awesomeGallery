@@ -1,21 +1,3 @@
-// get image and image title
-function getData() {
-    axios.get('/getData').then((response) => {
-        $('#contentRow').empty();
-        const data = response.data;
-
-        $.each(data, function(i) {
-            $("<div class='col-md-2 text-center'>").html(
-                "<img src='{{ asset('photos/"+data[i].photo+"') }}' class='rounded mx-auto d-block image' alt='image !'></img> "+
-                " <p>"+ data[i].title +"</p> " +
-                " <a href='javascript:void(0)' id='deleteImg' class='removeImg' dataId="+ data[i].id +"><i class='fas fa-trash-alt'></i> Remove</a> "
-            ).appendTo('#contentRow');
-        });
-    }).catch((error) => {
-        alert('error')
-    })
-}
-
 $( document ).ready(function() { 
 
     // on image drag
@@ -60,7 +42,6 @@ $( document ).ready(function() {
         const file = e.originalEvent.dataTransfer.files[0];
         const fileType = file.type;
         const fileSize = ((file.size)/(1024*1024)).toFixed(2);
-        console.log(fileType)
 
         if(fileType == "image/png" || fileType == "image/jpeg") {
             const reader = new FileReader();
@@ -166,13 +147,12 @@ $( document ).ready(function() {
         const config = {
             headers: {'content-type' : 'multipart/form-data'},
             onUploadProgress: function(e) {
-                console.log(e)
                 const upPercent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
-                console.log(upPercent)
                 $('#progressBarFill').css('width', upPercent.toFixed(2) + "%");
                 $('.bar-fill-text').text(upPercent.toFixed(2) + "%")
             }
         }
+
         axios.post(url, formData, config).then((response) => {
             if(response.status == 200 && response.data == 1) {
                 getData()
@@ -199,5 +179,61 @@ $( document ).ready(function() {
         $("#titleHelp").addClass('d-none');
         $("#imageTitle").removeClass('errorBorder');
     }
-
 });
+
+// get image and image title
+function getData() {
+    fetch('/getData').then((res) => res.json()).then((datas) => {
+        let output = ""
+        datas.forEach((data) => {
+            output += `
+                <div class='col-md-2 text-center mt-5'>
+                    <img class='rounded mx-auto d-block image' src="photos/${data.photo}"></img>
+                    <p>${data.title}</p>
+                    <a href="javascript:void(0)" id='deleteImg' onclick='deleteImg(${data.id})' class='removeImg' data-id='${data.id}'><i class='fas fa-trash-alt'></i> Remove</a>
+                </div>
+            `
+        });
+        document.getElementById('contentRow').innerHTML = output;
+
+    }).catch((error) => {
+        alert('error');
+    })
+}
+
+let search = document.getElementById('search');
+
+const searchResult = async searchText => {
+    let datas = await fetch('/getData');
+    let data = await datas.json();
+    
+    let matcheData = data.filter(data => {
+        const regex = new RegExp(searchText, 'gi');
+        return data.title.match(regex);
+    })
+
+    searchData(matcheData)
+};
+
+const searchData = matcheData => {
+    const html = matcheData.map(match =>  `
+        <div class='col-md-2 text-center mt-5'>
+            <img class='rounded mx-auto d-block image' src="photos/${match.photo}"></img>
+            <p>${match.title}</p>
+            <a href="javascript:void(0)" id='deleteImg' class='removeImg' data-id='${match.id}'><i class='fas fa-trash-alt'></i> Remove</a>
+        </div>
+    `).join('');
+    document.getElementById('contentRow').innerHTML = html;
+}
+
+search.addEventListener('keyup', () => searchResult(search.value))
+
+const deleteImg = id => {
+    fetch('/deleteImage/'+id).then((res) => {
+        if(res.status == 200) {
+            getData();
+        }
+    }).catch((error) => {
+        alert('error')
+    })
+}

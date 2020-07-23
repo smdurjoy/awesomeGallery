@@ -35,4 +35,21 @@ class PhotoUploadController extends Controller
     function getData() {
         return Photo::orderBy('id', 'desc')->get();
     }
+
+    function deleteImage($id) {
+        $image = Photo::select('photo')->where('id', $id)->first();
+        $imagePath = "photos/";
+
+        if(file_exists($imagePath.$image->photo)) {
+            unlink($imagePath.$image->photo);
+        } 
+
+        $result = Photo::where('id', $id)->delete();
+
+        if($result == true) {
+            return 'Success';
+        } else {
+            return 'Error';
+        }
+    }
 }
