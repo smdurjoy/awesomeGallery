@@ -27,16 +27,7 @@
         </div>
         <hr class="my-4">
         <div class="row" id="contentRow">
-            <table>
-                <thead>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Remove</th>
-                </thead>
-                <tbody id="tableBody">
 
-                </tbody>
-            </table>
         </div>
     </div>
 

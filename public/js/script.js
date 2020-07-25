@@ -187,8 +187,8 @@ function getData() {
         let output = ""
         datas.forEach((data) => {
             output += `
-                <div class='col-md-2 text-center mt-5'>
-                    <img class='rounded mx-auto d-block image' src="photos/${data.photo}"></img>
+                <div class='col-md-2 text-center mt-5 imgGallery'>
+                    <a href='photos/${data.photo}'><img class='rounded mx-auto d-block image' src="photos/${data.photo}"></img></a>
                     <p>${data.title}</p>
                     <a href="javascript:void(0)" id='deleteImg' onclick='deleteImg(${data.id})' class='removeImg' data-id='${data.id}'><i class='fas fa-trash-alt'></i> Remove</a>
                 </div>
